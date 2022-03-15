@@ -38,7 +38,7 @@ d1 = Doctor.new('Paul')
 ```
 
 ## Getters and Setters
-- we need attribute macros to access and change instance variables 
+- Attribute macros make it easier for us to access and change instance variables
 - `attr_reader` -> reads the instance variable  (getter)
 - `attr_writer` -> changes an instance variable (setter)
 - `attr_accessor` -> does both (getter and setter)

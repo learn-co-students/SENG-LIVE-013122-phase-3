@@ -23,7 +23,7 @@ Today, we'll be creating a `Patient` class to add consistency / reusability and 
 
 5. In `cli.rb`, refactor `create_patient` to call `Patient.new` along with the user inputted values before assigning the new Patient instance to a variable, `p1`. Using `binding.pry`, verify that you can read new Patient attributes with `p1.id`, `p1.species`, `p1.age`, `p1.name`, `p1.owner`, and `p1.phone`. To assure that you can update these attributes, try setting the `age` to a new value in your Pry session.
 
-6. Add a new class variable, `@@all`, to the `Patient` class. Shovel `self` into `@all` at the end of `initialize`. Create a class method (i.e., `self.all`) that returns `@@all`. Using `binding.pry`, verify that you can retrieve an array of all existing Patient instances.
+6. Add a new class variable, `@@all`, to the `Patient` class. Shovel `self` into `@@all` at the end of `initialize`. Create a class method (i.e., `self.all`) that returns `@@all`. Using `binding.pry`, verify that you can retrieve an array of all existing Patient instances.
 
 ### Bonus
 
