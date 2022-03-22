@@ -14,7 +14,7 @@ class Vet < ActiveRecord::Base
 
     def self.most_patients 
         # SyntaxError
-        # self.all.max{ |v| v.patients.length
+        # self.all.max{ |v| v.patients.length 
         
         # binding.pry
         # self.all => All Vets
@@ -27,12 +27,16 @@ class Vet < ActiveRecord::Base
 
     # Instance Methods
 
+    # def some_method
+    
+    # end
+
     def find_old_patients
         # TypeError
-        self.patients.sample("age > 9")
+        # self.patients.sample("age > 9")
         # https://apidock.com/ruby/v2_5_5/Array/sample
         
-        # self.patients.where("age > 9")
+        self.patients.where("age > 9")
     end
 
     # ArgumentError
