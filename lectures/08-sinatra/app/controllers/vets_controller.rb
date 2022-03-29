@@ -4,10 +4,21 @@ class VetsController < ApplicationController
 
     # NOTE => Run `bundle exec rake server` to view JSON responses in the Browser
 
-    # /patients => Retrieve All Vets and Associated Patients
-    # BONUS => Include Only Vet's Name & Speciality Attributes
+    # /vets => Retrieve All Vets and Associated Patients
+    # BONUS => Include Only Vet's Name & Specialty Attributes
 
-    # /patients/:id => Retrieve an Individual Vet via Params (:id)
+    get '/vets' do
+        vets = Vet.all
+        vets.to_json(
+            only: [:vet_name, :specialty], 
+            include: :patients
+        )
+    end
+
+    # /vets/:id => Retrieve an Individual Vet via Params (:id)
     # BONUS => Include Vet's Associated Appointments
-
+    get '/vets/:id' do
+        vet = Vet.all.find(params[:id])
+        vet.to_json(include: :appointments)
+    end
 end 
