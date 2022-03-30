@@ -8,6 +8,17 @@ class ClinicsController < ApplicationController
     #   - clinic_name: "Flatiron Vet Clinic"
     #   - address: "111 Hacker Way"
     #   - phone: 012-345-6789
+    post '/clinics' do
+        clinic = Clinic.create(
+            clinic_name: params[:clinic_name],
+            address: params[:address],
+            phone: params[:phone]
+        )
+
+        clinic.to_json
+
+        # /clinics/3 => Show page for newly created Clinic
+    end
     
     # READ (GET) (ALL)
     get '/clinics' do
@@ -30,8 +41,23 @@ class ClinicsController < ApplicationController
     # NOTE => To check, use Postman to update our created Clinic with the following 
     # attribute:
     #   - address: "222 Hacker Way"
+    patch '/clinics/:id' do
+        clinic = Clinic.find(params[:id])
+        clinic.update(
+            address: params[:address]
+        )
+        clinic.to_json
+        # /clinics/3 => Show page for newly updated Clinic
+    end
 
     # DESTROY (DELETE) (ONE)
     # NOTE => To check, use Postman to delete our created Clinic. Confirm that it's
     # been deleted by navigating to 'localhost:9292/clinics/3'. What happens?
+    delete '/clinics/:id' do
+        clinic = Clinic.find(params[:id])
+        clinic.destroy
+        clinic.to_json
+        # /clinics/3 => CANNOT redirect to show page for newly updated Clinic
+        # /clinics => View of all existing Clinic resources (2 remaining) 
+    end
 end

@@ -8,6 +8,15 @@ class VetsController < ApplicationController
     #   - vet_name: 'Tiger King'
     #   - specialty: 'cats'
 
+    post '/vets' do
+        vet = Vet.create(
+            vet_name: params[:vet_name],
+            specialty: params[:specialty]
+        )
+
+        vet.to_json
+    end
+    
     # READ (GET) (ALL)
     get '/vets' do
         vets = Vet.all
@@ -27,8 +36,22 @@ class VetsController < ApplicationController
     # NOTE => To check, use Postman to update our created Vet with the following 
     # attribute:
     #   - vet_name: "Carole Baskin"
+    patch '/vets/:id' do
+        vet = Vet.find(params[:id])
+        vet.update(
+            vet_name: params[:vet_name]
+        )
+
+        vet.to_json
+    end
 
     # DESTROY (DELETE) (ONE)
     # NOTE => To check, use Postman to delete our created Vet. Confirm that it's
     # been deleted by navigating to 'localhost:9292/vets/11'. What happens?
+
+    delete '/vets/:id' do
+        vet = Vet.find(params[:id])
+        vet.destroy
+        vet.to_json
+    end
 end 
